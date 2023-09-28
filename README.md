@@ -1,3 +1,3 @@
-# templates projet LAravel 10 avec Breeze
+# Laravel 10 : (Udemy One)
 
-## 28/09/23
+## Training sur les permissions
