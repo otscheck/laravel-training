@@ -1,3 +1,3 @@
-# templates projet LAravel 10 avec Breeze
+# Training sur les permission Udemy Two
 
-## 28/09/23
+## début du projet 28/09/23
