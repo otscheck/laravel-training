@@ -1,3 +1,5 @@
-<x-admin-layout>
-    <h1>admin Layouts !</h1>
-</x-admin-layout>
+@extends('layouts.admin-layout') 
+
+@section('body')
+<h1>admin Layouts !</h1>
+@endsection

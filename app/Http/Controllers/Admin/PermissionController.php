@@ -22,7 +22,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.permissions.create');
     }
 
     /**
@@ -30,7 +30,10 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate((['name'=>'required', 'min:3']));
+        Permission::create($validated);
+
+        return to_route('admin.permissions.index')->with('message', 'permission créée');
     }
 
     /**
@@ -44,24 +47,30 @@ class PermissionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Permission $permission)
     {
-        //
+        return view("admin.permissions.edit", compact('permission'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Permission $permission)
     {
-        //
+
+        // dd('ok');
+        $validated = $request->validate((['name'=>'required', 'min:3']));
+        $permission->update($validated);
+
+        return to_route('admin.permissions.index')->with('message', 'permission modifiée');   
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Permission $permission)
     {
-        //
+        $permission->delete();
+        return to_route('admin.permissions.index')->with('message', 'permission effacée');
     }
 }

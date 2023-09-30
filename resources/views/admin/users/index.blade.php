@@ -12,27 +12,19 @@
           <tr>
             <th scope="col" class="px-6 py-4">ID</th>
             <th scope="col" class="px-6 py-4">Name</th>
-            <th scope="col" class="px-6 py-4">Permissions</th>
+            <th scope="col" class="px-6 py-4">Role</th>
           </tr>
         </thead>
         <tbody>
-            @foreach ($roles  as $role )                
+            @foreach ($users  as $user )                
             <tr class="border-b bg-white">
-                <th class="px-6 py-4 font-medium text-gray-900">{{ $role->id}}</th>
-                <th class="px-6 py-4 font-medium text-gray-900">{{ $role->name}}</th>
-                <th class="px-6 py-4 font-medium text-gray-900">
-                  @forelse ($role->permissions as $rp)
-                   <span class="m-1 p-1 bg-indigo-300 rounded"> {{ $rp->name}}</span>
-                   
-                   @empty
-                   <span class="m-1 p-1 text-red-800"> pas de rôle assigné</span>
-                   
-                   @endforelse
-                  </th>
+                <th class="px-6 py-4 font-medium text-gray-900">{{ $user->id}}</th>
+                <th class="px-6 py-4 font-medium text-gray-900">{{ $user->name}}</th>
+                <th class="px-6 py-4 font-medium text-gray-900"> {{ $user->role->name}} </th>
                 <td class="whitespace-nowrap px-6 py-4">
                   <div class="flex space-x-2">                
-                    <a href="{{route('admin.roles.edit', $role)}}">Edit</a>
-                    <form action="{{ route('admin.roles.destroy', $role)}}" method="POST" onsubmit="return confirm('etes vous en sûr ?');">
+                    <a href="{{route('admin.users.edit', $user)}}">Edit</a>
+                    <form action="{{ route('admin.users.destroy', $user)}}" method="POST" onsubmit="return confirm('etes vous en sûr ?');">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="font-medium text-red-600 hover:underline">Delete</button>
